@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 
 import { ACTION } from "../context/Actions";
 import { GlobalContext } from "../context/GlobalState";
-import { Element, NumberType } from "../context/types";
+import { CartItem, Element, NumberType } from "../context/types";
 
 function Cards(): JSX.Element {
   const { state, dispatch } = useContext(GlobalContext);
@@ -43,7 +43,14 @@ function Cards(): JSX.Element {
                   -
                 </button>
                 <button className="btn btn-outline-warning disabled">
-                  ADD TO CART
+                  ADD TO CART (
+                  {
+                    state.cart.filter(
+                      (cartItem: CartItem) =>
+                        cartItem.item.title === element.title
+                    ).length
+                  }
+                  )
                 </button>
                 <button
                   className="btn btn-outline-success"
