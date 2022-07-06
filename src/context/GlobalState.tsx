@@ -2,7 +2,7 @@ import React, { createContext, useReducer, useEffect } from "react";
 import { ACTION } from "./Actions";
 import AppReducer from "./Reducer";
 
-let url = "https://fakestoreapi.com/products";
+const url = "https://fakestoreapi.com/products";
 
 const initialState: any = {
   data: [],
