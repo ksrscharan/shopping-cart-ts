@@ -21,7 +21,6 @@ export function GlobalProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     fetcher(url);
-    console.log(initialState);
   }, []);
 
   return (
