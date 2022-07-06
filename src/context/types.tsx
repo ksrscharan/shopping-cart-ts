@@ -18,6 +18,7 @@ export type CartItem = {
 export type ActionType = {
   ADD_DATA: string;
   ADD_TO_CART: string;
+  DECREASE_COUNT: string;
   DELETE_CART_ITEM: string;
 };
 export type NumberType = number;

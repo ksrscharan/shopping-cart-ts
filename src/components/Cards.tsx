@@ -2,13 +2,13 @@ import React, { useContext } from "react";
 
 import { ACTION } from "../context/Actions";
 import { GlobalContext } from "../context/GlobalState";
-import { Element, NumberType } from "../context/types";
+import {Element, NumberType } from "../context/types";
 
 function Cards(): JSX.Element {
   const { state, dispatch } = useContext(GlobalContext);
 
   return (
-    <>
+    <React.Fragment>
       {state.data.map((element: Element, index: NumberType) => (
         <div
           className="card col-md-6 m-2 bg-light"
@@ -32,22 +32,37 @@ function Cards(): JSX.Element {
                   {element.price}
                 </h5>
                 <button
-                  className="btn btn-outline-warning"
-                  onClick={() => {
+                  className="btn btn-outline-danger"
+                  onClick={(e) => {
+                    dispatch({
+                      type: ACTION.DECREASE_COUNT,
+                      payload: element.title,
+                    });
+                  }}
+                >
+                  -
+                </button>
+                <button className="btn btn-outline-warning disabled">
+                  ADD TO CART
+                </button>
+                <button
+                  className="btn btn-outline-success"
+                  onClick={(e) => {
+                    e.preventDefault();
                     dispatch({
                       type: ACTION.ADD_TO_CART,
                       payload: { id: Date.now(), item: element },
                     });
                   }}
                 >
-                  ADD TO CART
+                  +
                 </button>
               </div>
             </div>
           </div>
         </div>
       ))}
-    </>
+    </React.Fragment>
   );
 }
 
