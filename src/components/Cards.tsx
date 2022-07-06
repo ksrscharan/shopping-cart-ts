@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 
 import { ACTION } from "../context/Actions";
 import { GlobalContext } from "../context/GlobalState";
-import {Element, NumberType } from "../context/types";
+import { Element, NumberType } from "../context/types";
 
 function Cards(): JSX.Element {
   const { state, dispatch } = useContext(GlobalContext);
