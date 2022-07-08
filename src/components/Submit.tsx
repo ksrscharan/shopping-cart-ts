@@ -1,16 +1,15 @@
+import { addDoc } from "firebase/firestore";
 import React, { useContext } from "react";
 import { ACTION } from "../context/Actions";
 import { GlobalContext } from "../context/GlobalState";
-import { db } from "../firebase";
+import { colref, db } from "../firebase";
 import NavBar from "./NavBar";
 
 function Submit() {
   const { state, dispatch } = useContext(GlobalContext);
-
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    db.collection("products")
-      .add({
+    addDoc(colref, {
         title: state.details.title,
         category: state.details.category,
         price: state.details.price,

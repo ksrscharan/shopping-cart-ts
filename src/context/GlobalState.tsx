@@ -1,5 +1,6 @@
+import { getDocs } from "firebase/firestore";
 import React, { createContext, useReducer, useEffect } from "react";
-import { db } from "../firebase";
+import { colref, db } from "../firebase";
 import { ACTION } from "./Actions";
 import AppReducer from "./Reducer";
 
@@ -26,21 +27,14 @@ export function GlobalProvider({ children }: { children: React.ReactNode }) {
   // const [details, setDetails] = useState({ title: "", category: "", price: "" });
   // const [res, setRes]: any = useState([]);
 
-  useEffect(() => {
-    let dataFromFirebase: any = [];
-    const subscriber = db.collection("products").onSnapshot((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        dataFromFirebase.push(
-          {
-            ...doc.data(),
-            key: doc.id,
-          })
-          dispatch({ type: ACTION.SET_RES, payload: dataFromFirebase.pop() });
-        });
-    });
-
-    return () => subscriber();
-  }, []);
+  getDocs(colref).then((snapshot)=>{
+    let docs: any = []
+    snapshot.forEach((doc)=>{
+      docs.push({...doc.data(), id: doc.id})
+    
+    })
+    dispatch({type: ACTION.SET_RES, payload: docs})
+  })
   return (
     <GlobalContext.Provider value={{ state, dispatch }}>
       {children}

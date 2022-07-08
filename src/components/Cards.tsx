@@ -6,7 +6,6 @@ import { NumberType, CartItem } from "../context/types";
 
 function Cards(): JSX.Element {
   const { state, dispatch } = useContext(GlobalContext);
-  console.log(state.res)
 
   return (
     <React.Fragment>
