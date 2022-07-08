@@ -1,13 +1,6 @@
-// import firebase from "firebase/app";
-// import 'firebase/firestore'
 import { Config } from "./context/types";
-import {initializeApp} from 'firebase/app'
-import {
-  getFirestore, collection, getDocs
-} from 'firebase/firestore'
-import { useContext } from "react";
-import { GlobalContext } from "./context/GlobalState";
-
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection } from "firebase/firestore";
 
 const firebaseConfig: Config = {
   apiKey: "AIzaSyCMOFfFhwdiatu0xVeNjtWHzhil4EvC1iE",
@@ -19,11 +12,8 @@ const firebaseConfig: Config = {
 };
 
 initializeApp(firebaseConfig);
-var db = getFirestore()
+var db = getFirestore();
 
-export const colref = collection(db, 'products')
-
-//get data
-
+export const colref = collection(db, "products");
 
 export { db };

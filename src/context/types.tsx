@@ -36,4 +36,4 @@ export type Config = {
   storageBucket: string;
   messagingSenderId: string;
   appId: string;
-}
+};

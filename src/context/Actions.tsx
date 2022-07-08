@@ -10,5 +10,5 @@ export const ACTION: ActionType = {
   SET_DETAILS_TITLE: "set-title",
   SET_DETAILS_CATEGORY: "set-category",
   SET_DETAILS_PRICE: "set-price",
-  SET_DETAILS_IMAGE: "set-image"
+  SET_DETAILS_IMAGE: "set-image",
 };

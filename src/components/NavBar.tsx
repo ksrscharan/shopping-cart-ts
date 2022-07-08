@@ -16,18 +16,18 @@ function NavBar(): JSX.Element {
           </Link>
 
           <div>
-          <Link to="/cart" className="navbar-text">
-            Cart{" "}
-            <small>
-              ${" "}
-              {state.cart
-                .map((eachCart: CartItem) => parseFloat(eachCart.item.price))
-                .reduce((a: NumberType, b: NumberType) => a + b, 0)
-                .toFixed(2)}{" "}
-              [ {state.cart.length} ]
-            </small>
-          </Link>
-          <Link to={`/submit`}>Submit Product</Link>
+            <Link to="/cart" className="navbar-text">
+              Cart{" "}
+              <small>
+                ${" "}
+                {state.cart
+                  .map((eachCart: CartItem) => parseFloat(eachCart.item.price))
+                  .reduce((a: NumberType, b: NumberType) => a + b, 0)
+                  .toFixed(2)}{" "}
+                [ {state.cart.length} ]
+              </small>
+            </Link>
+            <Link to={`/submit`}>Submit Product</Link>
           </div>
         </div>
       </nav>

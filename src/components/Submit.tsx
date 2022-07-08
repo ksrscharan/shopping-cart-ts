@@ -10,11 +10,11 @@ function Submit() {
   const handleSubmit = (e: any) => {
     e.preventDefault();
     addDoc(colref, {
-        title: state.details.title,
-        category: state.details.category,
-        price: state.details.price,
-        image: state.details.image,
-      })
+      title: state.details.title,
+      category: state.details.category,
+      price: state.details.price,
+      image: state.details.image,
+    })
       .then(() => {
         alert("Message is sent! ");
       })

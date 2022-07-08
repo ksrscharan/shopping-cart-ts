@@ -60,10 +60,9 @@ export default function reducer(
         details: { ...state.details, image: action.payload },
       };
 
-    case ACTION.SET_RES:{
-
-    return {...state, res: action.payload}
-}
+    case ACTION.SET_RES: {
+      return { ...state, res: action.payload };
+    }
     default:
       return state;
   }
