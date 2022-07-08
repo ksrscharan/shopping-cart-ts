@@ -15,17 +15,20 @@ function NavBar(): JSX.Element {
             Shopping Cart
           </Link>
 
+          <div>
           <Link to="/cart" className="navbar-text">
             Cart{" "}
             <small>
               ${" "}
               {state.cart
-                .map((eachCart: CartItem) => eachCart.item.price)
+                .map((eachCart: CartItem) => parseFloat(eachCart.item.price))
                 .reduce((a: NumberType, b: NumberType) => a + b, 0)
                 .toFixed(2)}{" "}
               [ {state.cart.length} ]
             </small>
           </Link>
+          <Link to={`/submit`}>Submit Product</Link>
+          </div>
         </div>
       </nav>
     </div>

@@ -31,6 +31,42 @@ export default function reducer(
             )
         ),
       };
+    case ACTION.RESET_DETAILS:
+      return {
+        ...state,
+        details: { title: "", category: "", price: "", image: "" },
+      };
+
+    case ACTION.SET_DETAILS_CATEGORY:
+      return {
+        ...state,
+        details: { ...state.details, category: action.payload },
+      };
+
+    case ACTION.SET_DETAILS_TITLE:
+      return {
+        ...state,
+        details: { ...state.details, title: action.payload },
+      };
+
+    case ACTION.SET_DETAILS_PRICE:
+      return {
+        ...state,
+        details: { ...state.details, price: action.payload },
+      };
+    case ACTION.SET_DETAILS_IMAGE:
+      return {
+        ...state,
+        details: { ...state.details, image: action.payload },
+      };
+
+    case ACTION.SET_RES:
+
+      return {
+        ...state,
+        res: [...state.res, action.payload],
+      };
+
     default:
       return state;
   }
