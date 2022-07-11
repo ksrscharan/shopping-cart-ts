@@ -1,13 +1,11 @@
 import { ACTION } from "./Actions";
-import { CartItem } from "./types";
+import { CartItem, State } from "./types";
 
 export default function reducer(
-  state: any,
+  state: State,
   action: { type: string; payload?: any }
 ) {
   switch (action.type) {
-    case ACTION.ADD_DATA:
-      return { ...state, data: action.payload };
     case ACTION.ADD_TO_CART:
       return { ...state, cart: [...state.cart, action.payload] };
     case ACTION.DELETE_CART_ITEM:
@@ -60,8 +58,8 @@ export default function reducer(
         details: { ...state.details, image: action.payload },
       };
 
-    case ACTION.SET_RES: {
-      return { ...state, res: action.payload };
+    case ACTION.SET_PRODUCTS: {
+      return { ...state, products: action.payload };
     }
     default:
       return state;

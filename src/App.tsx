@@ -6,7 +6,7 @@ import "./App.css";
 import { GlobalProvider } from "./context/GlobalState";
 import HomePage from "./components/HomePage";
 import Cart from "./components/Cart";
-import Submit from "./components/Submit";
+import Submit from "./components/SubmitToFirebase";
 
 function App() {
   return (
