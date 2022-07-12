@@ -2,14 +2,16 @@ import React, { useContext } from "react";
 
 import { ACTION } from "../context/Actions";
 import { GlobalContext } from "../context/GlobalState";
-import { Element, NumberType, CartItem } from "../context/types";
+import { NumberType, CartItem, Element } from "../context/types";
+import { GetProducts } from "../service/getProducts";
 
 function Cards(): JSX.Element {
   const { state, dispatch } = useContext(GlobalContext);
+  GetProducts();
 
   return (
     <React.Fragment>
-      {state.data.map((element: Element, index: NumberType) => (
+      {state.products.map((element: Element, index: NumberType) => (
         <div
           className="card col-md-6 m-2 bg-light"
           style={{ maxWidth: "540px" }}

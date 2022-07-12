@@ -1,27 +1,16 @@
-import React, { createContext, useReducer, useEffect } from "react";
-import { ACTION } from "./Actions";
+import React, { createContext, useReducer } from "react";
 import AppReducer from "./Reducer";
 
-const url = "https://fakestoreapi.com/products";
-
-const initialState: any = {
-  data: [],
+const initialState: React.ComponentState = {
   cart: [],
+  details: {},
+  products: [],
 };
 
 export const GlobalContext = createContext(initialState);
 
 export function GlobalProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(AppReducer, initialState);
-  const fetcher = async (url: string) => {
-    const res = await fetch(url);
-    const data = await res.json();
-    dispatch({ type: ACTION.ADD_DATA, payload: data });
-  };
-
-  useEffect(() => {
-    fetcher(url);
-  }, []);
 
   return (
     <GlobalContext.Provider value={{ state, dispatch }}>

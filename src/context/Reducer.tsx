@@ -1,13 +1,11 @@
 import { ACTION } from "./Actions";
-import { CartItem } from "./types";
+import { CartItem, State } from "./types";
 
 export default function reducer(
-  state: any,
+  state: State,
   action: { type: string; payload?: any }
 ) {
   switch (action.type) {
-    case ACTION.ADD_DATA:
-      return { ...state, data: action.payload };
     case ACTION.ADD_TO_CART:
       return { ...state, cart: [...state.cart, action.payload] };
     case ACTION.DELETE_CART_ITEM:
@@ -31,6 +29,38 @@ export default function reducer(
             )
         ),
       };
+    case ACTION.RESET_DETAILS:
+      return {
+        ...state,
+        details: { title: "", category: "", price: "", image: "" },
+      };
+
+    case ACTION.SET_DETAILS_CATEGORY:
+      return {
+        ...state,
+        details: { ...state.details, category: action.payload },
+      };
+
+    case ACTION.SET_DETAILS_TITLE:
+      return {
+        ...state,
+        details: { ...state.details, title: action.payload },
+      };
+
+    case ACTION.SET_DETAILS_PRICE:
+      return {
+        ...state,
+        details: { ...state.details, price: action.payload },
+      };
+    case ACTION.SET_DETAILS_IMAGE:
+      return {
+        ...state,
+        details: { ...state.details, image: action.payload },
+      };
+
+    case ACTION.SET_PRODUCTS: {
+      return { ...state, products: action.payload };
+    }
     default:
       return state;
   }
